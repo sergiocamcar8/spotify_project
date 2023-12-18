@@ -1,0 +1,170 @@
+# This file maps a region to a country
+library(tidyverse)
+
+
+uri_data <- read_csv("../Statistical Consulting/r_project/data/uri_data")
+
+region_mapping <- data.frame(country = uri_data$country)
+
+# based on the World Bank groupings we will map regions to data
+  ## https://unstats.un.org/sdgs/indicators/regional-groups/
+  ## https://ourworldindata.org/world-region-map-definitions#:~:text=United%20Nations'%20published%20list%20of,a%20total%20of%20eight%20regions.
+
+# 'central_southern_asia'
+# 'europe_central_asia'
+# 'middle_east_north_africa'
+# 'sub_saharan_africa'
+# 'latin_america'
+# 'oceania'
+# 'south_asia'
+# 'east_asia_pacific'
+# 'north_america'
+
+region <- c('central_southern_asia', 
+            'europe_central_asia',
+            'middle_east_north_africa',
+            'europe_central_asia',
+            'sub_saharan_africa',
+            'latin_america',
+            'europe_central_asia',
+            'oceania',
+            'europe_central_asia',
+            'europe_central_asia',
+            'middle_east_north_africa',
+            'europe_central_asia',
+            'europe_central_asia',
+            'europe_central_asia',
+            'south_asia',
+            'latin_america',
+            'europe_central_asia',
+            'sub_saharan_africa',
+            'latin_america',
+            'europe_central_asia',
+            'sub_saharan_africa',
+            'east_asia_pacific',
+            'sub_saharan_africa',
+            'north_america',
+            'latin_america',
+            'east_asia_pacific',
+            'latin_america',
+            'sub_saharan_africa',
+            'sub_saharan_africa',
+            'latin_america',
+            'europe_central_asia',
+            'europe_central_asia',
+            'europe_central_asia',
+            'europe_central_asia',
+            'latin_america',
+            'latin_america',
+            'middle_east_north_africa',
+            'latin_america',
+            'europe_central_asia',
+            'europe_central_asia',
+            'europe_central_asia',
+            'sub_saharan_africa',
+            'sub_saharan_africa',
+            'europe_central_asia',
+            'europe_central_asia',
+            'sub_saharan_africa',
+            'europe_central_asia',
+            'latin_america',
+            'latin_america',
+            'latin_america',
+            'east_asia_pacific',
+            'europe_central_asia',
+            'europe_central_asia',
+            'south_asia',
+            'east_asia_pacific',
+            'middle_east_north_africa',
+            'middle_east_north_africa',
+            'europe_central_asia',
+            'middle_east_north_africa',
+            'europe_central_asia',
+            'latin_america',
+            'east_asia_pacific',
+            'middle_east_north_africa',
+            'europe_central_asia',
+            'sub_saharan_africa',
+            'east_asia_pacific',
+            'europe_central_asia',
+            'middle_east_north_africa',
+            'middle_east_north_africa',
+            'europe_central_asia',
+            'europe_central_asia',
+            'east_asia_pacific',
+            'latin_america',
+            'east_asia_pacific',
+            'middle_east_north_africa',
+            'south_asia',
+            'europe_central_asia',
+            'oceania',
+            'latin_america',
+            'sub_saharan_africa',
+            'europe_central_asia',
+            'latin_america',
+            'latin_america',
+            'latin_america',
+            'east_asia_pacific',
+            'europe_central_asia',
+            'europe_central_asia',
+            'latin_america',
+            'europe_central_asia',
+            'europe_central_asia',
+            'middle_east_north_africa',
+            'sub_saharan_africa',
+            'east_asia_pacific',
+            'europe_central_asia',
+            'europe_central_asia',
+            'sub_saharan_africa',
+            'europe_central_asia',
+            'south_asia',
+            'sub_saharan_africa',
+            'europe_central_asia',
+            'europe_central_asia',
+            'east_asia_pacific',
+            'sub_saharan_africa',
+            'east_asia_pacific',
+            'europe_central_asia',
+            'sub_saharan_africa',
+            'europe_central_asia',
+            'middle_east_north_africa',
+            'europe_central_asia',
+            'north_america',
+            'latin_america',
+            'europe_central_asia',
+            'latin_america',
+            'east_asia_pacific',
+            'sub_saharan_africa',
+            'sub_saharan_africa'
+            )
+
+# hong kong,  doesn't map to mapping function 
+
+map_country <- c('Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola',
+                 'Argentina', 'Armenia', 'Australia', 'Austria', 'Azerbaijan',
+                 'Bahrain', 'Belarus', 'Belgium', 'Luxembourg', 'Bhutan', 'Bolivia',
+                 'Bosnia and Herzegovina', 'Botswana', 'Brazil', 'Bulgaria', 'Burundi',
+                 'Cambodia', 'Cameroon', 'Canada', 'Chile', 'China', 'Colombia',
+                 'Comoros','Democratic Republic of the Congo','Costa Rica', 
+                 'Croatia', 'Cyprus', 'Czech Republic', 'Denmark', 
+                 'Dominican Republic', 'Ecuador', 'Egypt', 'El Salvador', 
+                 'Estonia', 'Finland', 'France', 'Gabon', 'Gambia', 'Georgia',
+                 'Germany', 'Ghana', 'Greece', 'Guatemala', 'Haiti', 'Honduras',
+                 'Hong Kong','Hungary', 'Iceland', 'India', 'Indonesia', 'Iran',
+                 'Iraq', 'Ireland', 'Israel', 'Italy', 'Jamaica', 'Japan', 'Jordan',
+                 'Kazakhstan', 'Kenya', 'South Korea', 'Latvia', 'Lebanon', 
+                 'Libya', 'Lithuania', 'Luxembourg', 'Malaysia', 'Mexico', 
+                 'Mongolia', 'Morocco', 'Nepal', 'Netherlands', 'New Zealand',
+                 'Nicaragua', 'Nigeria', 'Norway', 'Panama', 'Paraguay', 'Peru',
+                 'Philippines', 'Poland', 'Portugal', 'Puerto Rico', 
+                 'Romania', 'Russia', 'Saudi Arabia', 'Senegal', 'Singapore',
+                 'Slovakia', 'Slovenia', 'South Africa', 'Spain', 'Sri Lanka',
+                 'Sudan', 'Sweden', 'Switzerland', 'Taiwan', 'Tanzania', 
+                 'Thailand', 'Turkey', 'Uganda', 'Ukraine', 'United Arab Emirates',
+                 'UK', 'USA', 'Uruguay', 'Uzbekistan', 'Venezuela', 'Vietnam',
+                 'Zambia', 'Zimbawe')
+
+region_mapping$region <- region
+region_mapping$map_country <- map_country
+
+write.csv(region_mapping, "../Statistical Consulting/r_project/data/region_mapping")
